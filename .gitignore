@@ -1,3 +1,7 @@
+
+# JetBrains
+/.idea/
+
 *.swm
 *.swn
 *.swo
