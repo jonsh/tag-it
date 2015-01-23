@@ -268,15 +268,14 @@
                         // Autocomplete will create its own tag from a selection and close automatically.
                         if (!(that.options.autocomplete.autoFocus && that.tagInput.data('autocomplete-open'))) {
                             that.tagInput.autocomplete('close');
-                            that.createTag(that._cleanedInput());
+                            that._createMultipleTags();
                         }
                     }
                 }).blur(function(e){
-                    // Create a tag when the element loses focus.
-                    // If autocomplete is enabled and suggestion was clicked, don't add it.
-                    if (!that.tagInput.data('autocomplete-open')) {
-                        that.createTag(that._cleanedInput());
-                    }
+                    // Create tags when the element loses focus.
+                    that._createMultipleTags();
+                }).bind('paste', function (e) {
+                    setTimeout(function (e) {that._createMultipleTags();}, 0);
                 });
 
             // Autocomplete.
@@ -349,6 +348,18 @@
             }
 
             return this;
+        },
+
+        // split input that has been entered containing whitespace and commas (e.g. by pasting in a list)
+        _createMultipleTags: function() {
+            var splitCleanedInputs= this._splitCleanedInput();
+            for (var i = 0; i < splitCleanedInputs.length; i++) {
+                this.createTag(splitCleanedInputs[i]);
+            }
+        },
+
+        _splitCleanedInput: function() {
+            return this._cleanedInput().split(/[,\s]+/);
         },
 
         _cleanedInput: function() {
