@@ -272,7 +272,17 @@
                         }
                     }
                 }).blur(function(e){
-                    // Create tags when the element loses focus.
+                    // Create a tag when the element loses focus.
+                    // If autocomplete is enabled and suggestion was clicked, don't add it.
+                    if (that.tagInput.data('autocomplete-open')) {
+                        // The autocomplete is open we don't want to add the current contents if a selection
+                        // was clicked. (I think this is only a problem on IE8
+                        var activeElement = document.activeElement;
+                        var autocomplete = that.tagInput.autocomplete('widget').get(0);
+                        if($.contains(autocomplete, activeElement)) {
+                            return;
+                        }
+                    }
                     that._createMultipleTags();
                 }).bind('paste', function (e) {
                     setTimeout(function (e) {that._createMultipleTags();}, 0);
