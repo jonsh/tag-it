@@ -1,4 +1,4 @@
-/*
+/** @license
 * jQuery UI Tag-it!
 *
 * @version v2.0 (06/2011)
