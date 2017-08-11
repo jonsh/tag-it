@@ -1,0 +1,19 @@
+{
+  "name": "tag-it",
+  "homepage": "https://github.com/aehlke/tag-it",
+  "authors": [
+    "Modified from Alex Ehlke (aehlke on github)"
+  ],
+  "description": "",
+  "main": "js/tag-it.js",
+  "moduleType": [],
+  "license": "See LICENSE",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
