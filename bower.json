@@ -5,7 +5,11 @@
     "Modified from Alex Ehlke (aehlke on github)"
   ],
   "description": "",
-  "main": "js/tag-it.js",
+  "main": [
+      "js/tag-it.js",
+      "css/jquery.tagit.css",
+      "css/tagit.ui-zendesk.css"
+  ],
   "moduleType": [],
   "license": "See LICENSE",
   "private": true,
